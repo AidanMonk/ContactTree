@@ -1,23 +1,29 @@
-#include "Queue.h"
-#include "TreeNode.h"
+#include "Queue.cpp"
+#include "TreeNode.cpp"
 
-class ContactTree
-{
-    private:
-        TreeNode* Patient0;
+template <typename T>
+class ContactTree {
+private:
+    TreeNode<T>* root;
 
-    public:
-        ContactTree();
-        ~ContactTree();
-        bool IsEmpty();
-        int GetSize();
-        void AddPatient0(const string&);
-        void AddContact(const string&, const string&);
-        TreeNode* LookUpContact(const string&);
-        void DeleteContact(const string&);
-        void DisplayContact(const string&);
-        void TraceSource(const string&);
-        void PrintContactCases(const string&);
-        void PrintContactTree(const string&);
-        void PrintHierarchicalTree();
+    void updateTotalCases(TreeNode<T>* node);
+    TreeNode<T>* findNode(const T& medId);
+    void deleteSubtree(TreeNode<T>* node);
+    void printHierarchicalTree(TreeNode<T>* node);
+
+public:
+    ContactTree();
+    ~ContactTree();
+    bool IsEmpty();
+    int GetSize();
+    void AddPatient0(const T& medId);
+    void AddContact(const T& parentMedId, const T& childMedId);
+    TreeNode<T>* LookUpContact(const T& medId);
+    void DeleteContact(const T& medId);
+    void DisplayContact(const T& medId);
+    void DisplayContact(TreeNode<T>* node);
+    void TraceSource(const T& medId);
+    void PrintContactCases(const T& medId);
+    void PrintContactTree();
+    void PrintHierarchicalTree();
 };
